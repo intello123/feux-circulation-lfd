@@ -2,7 +2,14 @@ function Jaune () {
     pins.digitalWritePin(DigitalPin.P0, 0)
     pins.digitalWritePin(DigitalPin.P1, 1)
     pins.digitalWritePin(DigitalPin.P2, 0)
-    pins.digitalWritePin(DigitalPin.P8, 0)
+    pins.digitalWritePin(DigitalPin.P8, 1)
+    pins.digitalWritePin(DigitalPin.P16, 0)
+}
+function clignotement () {
+    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P2, 1)
+    pins.digitalWritePin(DigitalPin.P8, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
 function Rouge () {
@@ -33,7 +40,7 @@ function Vert () {
     pins.digitalWritePin(DigitalPin.P0, 1)
     pins.digitalWritePin(DigitalPin.P1, 0)
     pins.digitalWritePin(DigitalPin.P2, 0)
-    pins.digitalWritePin(DigitalPin.P8, 0)
+    pins.digitalWritePin(DigitalPin.P8, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
 function Blanc () {
@@ -48,18 +55,38 @@ piéton = 0
 basic.forever(function () {
     if (piéton == 0) {
         while (piéton == 0) {
+            basic.showIcon(IconNames.No)
             Vert()
-            basic.pause(5000)
+            basic.pause(2500)
             Jaune()
-            basic.pause(2000)
-            Rouge()
-            basic.pause(5000)
+            basic.pause(1000)
+            clignotement()
+            basic.pause(3500)
         }
     }
     if (piéton == 1) {
         while (piéton == 1) {
             marche()
+            basic.showIcon(IconNames.StickFigure)
             basic.pause(2000)
+            clignotement()
+            basic.showIcon(IconNames.No)
+            basic.pause(250)
+            marche()
+            basic.showIcon(IconNames.StickFigure)
+            basic.pause(250)
+            clignotement()
+            basic.showIcon(IconNames.No)
+            basic.pause(250)
+            marche()
+            basic.showIcon(IconNames.StickFigure)
+            basic.pause(250)
+            clignotement()
+            basic.showIcon(IconNames.No)
+            basic.pause(250)
+            marche()
+            basic.showIcon(IconNames.StickFigure)
+            basic.pause(250)
             piéton = 0
         }
     }
