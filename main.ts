@@ -22,6 +22,13 @@ function Orange () {
 input.onButtonPressed(Button.A, function () {
     piéton = 1
 })
+function marche () {
+    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    pins.digitalWritePin(DigitalPin.P2, 1)
+    pins.digitalWritePin(DigitalPin.P8, 0)
+    pins.digitalWritePin(DigitalPin.P16, 1)
+}
 function Vert () {
     pins.digitalWritePin(DigitalPin.P0, 1)
     pins.digitalWritePin(DigitalPin.P1, 0)
@@ -36,42 +43,24 @@ function Blanc () {
     pins.digitalWritePin(DigitalPin.P8, 0)
     pins.digitalWritePin(DigitalPin.P16, 1)
 }
-let lumière = 0
 let piéton = 0
 piéton = 0
 basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-	
-})
-basic.forever(function () {
-    if (lumière == 0) {
-        Vert()
+    if (piéton == 0) {
+        while (piéton == 0) {
+            Vert()
+            basic.pause(5000)
+            Jaune()
+            basic.pause(2000)
+            Rouge()
+            basic.pause(5000)
+        }
     }
-    if (lumière == 1) {
-        Jaune()
+    if (piéton == 1) {
+        while (piéton == 1) {
+            marche()
+            basic.pause(2000)
+            piéton = 0
+        }
     }
-    if (lumière == 2) {
-        Rouge()
-    }
-    if (lumière == 0) {
-        Orange()
-    }
-    if (lumière == 3) {
-        Blanc()
-    }
-})
-basic.forever(function () {
-    lumière = 0
-    basic.pause(5000)
-    lumière = 1
-    basic.pause(2000)
-    lumière = 2
-    basic.pause(5000)
-    lumière = 3
-    basic.pause(5000)
 })
