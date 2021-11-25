@@ -55,7 +55,7 @@ piéton = 0
 basic.forever(function () {
     if (piéton == 0) {
         while (piéton == 0) {
-            basic.showIcon(IconNames.No)
+            basic.showNumber(0)
             Vert()
             basic.pause(2500)
             Jaune()
@@ -67,26 +67,25 @@ basic.forever(function () {
     if (piéton == 1) {
         while (piéton == 1) {
             marche()
-            basic.showIcon(IconNames.StickFigure)
-            basic.pause(2000)
+            basic.showNumber(3)
+            basic.pause(1000)
+            basic.showNumber(2)
+            basic.pause(1000)
+            basic.showNumber(1)
             clignotement()
-            basic.showIcon(IconNames.No)
-            basic.pause(250)
+            basic.pause(200)
             marche()
-            basic.showIcon(IconNames.StickFigure)
-            basic.pause(250)
+            basic.pause(200)
             clignotement()
-            basic.showIcon(IconNames.No)
-            basic.pause(250)
+            basic.pause(200)
             marche()
-            basic.showIcon(IconNames.StickFigure)
-            basic.pause(250)
+            basic.pause(200)
             clignotement()
-            basic.showIcon(IconNames.No)
-            basic.pause(250)
+            basic.pause(200)
             marche()
-            basic.showIcon(IconNames.StickFigure)
-            basic.pause(250)
+            basic.showNumber(0)
+            basic.pause(200)
+            Vert()
             piéton = 0
         }
     }
