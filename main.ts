@@ -81,8 +81,6 @@ basic.forever(function () {
             marche()
             basic.pause(200)
             clignotement()
-            basic.pause(200)
-            marche()
             basic.showNumber(0)
             basic.pause(200)
             Vert()
